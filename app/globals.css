@@ -1,0 +1,298 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 210 100% 41%; /* #0166d2 */
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 210 100% 41%;
+    --radius: 1rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 100% 41%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Montserrat", sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
+  font-feature-settings: "rlig" 1, "calt" 1;
+  letter-spacing: -0.025em;
+}
+
+/* Smooth transitions */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow,
+    transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus styles */
+.focus-visible:focus-visible {
+  @apply outline-none ring-2 ring-[#7ed957] ring-offset-2 ring-offset-background;
+}
+
+/* Custom animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float-gentle {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(-3deg);
+  }
+}
+
+@keyframes float-delayed {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(5deg);
+  }
+}
+
+@keyframes pulse-gentle {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes pulse-slow {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes pulse-slower {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out both;
+}
+
+.animate-float-gentle {
+  animation: float-gentle 4s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 5s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+.animate-pulse-gentle {
+  animation: pulse-gentle 2s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
+}
+
+.animate-pulse-slower {
+  animation: pulse-slower 6s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 3s linear infinite;
+}
+
+/* Soft shadows */
+.shadow-soft {
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.08), 0 2px 10px -2px rgba(0, 0, 0, 0.04);
+}
+
+.shadow-glow {
+  box-shadow: 0 0 20px rgba(126, 217, 87, 0.3), 0 4px 20px -2px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effects */
+.hover\:shadow-glow:hover {
+  box-shadow: 0 0 25px rgba(126, 217, 87, 0.4), 0 8px 30px -4px rgba(0, 0, 0, 0.15);
+}
+
+/* Brand colors */
+.text-brand-blue {
+  color: #0166d2;
+}
+.text-brand-navy {
+  color: #0254ae;
+}
+.text-brand-deep-navy {
+  color: #024288;
+}
+.text-brand-green {
+  color: #7ed957;
+}
+
+.bg-brand-blue {
+  background-color: #0166d2;
+}
+.bg-brand-navy {
+  background-color: #0254ae;
+}
+.bg-brand-deep-navy {
+  background-color: #024288;
+}
+.bg-brand-green {
+  background-color: #7ed957;
+}
+
+/* Gentle gradients */
+.gradient-serene {
+  background: linear-gradient(135deg, #7ed957 0%, #0166d2 100%);
+}
+
+.gradient-soft {
+  background: linear-gradient(135deg, rgba(126, 217, 87, 0.1) 0%, rgba(1, 102, 210, 0.1) 100%);
+}
+
+/* Glass morphism */
+.glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Rounded corners for feminine touch */
+.rounded-soft {
+  border-radius: 1.5rem;
+}
+.rounded-gentle {
+  border-radius: 2rem;
+}
+.rounded-serene {
+  border-radius: 2.5rem;
+}
+
+/* Button enhancements */
+.btn-primary {
+  @apply bg-[#0166d2] hover:bg-[#7ed957] text-white font-medium transition-all duration-500 hover:scale-105 hover:shadow-glow rounded-full;
+}
+
+.btn-secondary {
+  @apply border-[#0166d2]/30 text-[#0166d2] hover:bg-[#0166d2] hover:text-white font-medium transition-all duration-500 hover:scale-105 rounded-full;
+}
+
+/* Form styling */
+input:focus,
+textarea:focus {
+  @apply ring-2 ring-[#7ed957] ring-opacity-50 border-[#7ed957] transition-all duration-300;
+  box-shadow: 0 0 0 3px rgba(126, 217, 87, 0.1);
+}
+
+/* Placeholder animations */
+.placeholder-float {
+  @apply absolute left-3 top-3 text-slate-400 transition-all duration-300 pointer-events-none;
+}
+
+.placeholder-float.active {
+  @apply -top-2 left-2 text-xs text-[#0166d2] bg-white px-1;
+}
